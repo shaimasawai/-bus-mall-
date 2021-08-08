@@ -53,7 +53,7 @@ for( let i=0 ; i < imgArray.length ; i++){
     new imgdivid (imgArray[i].split('.')[0] , imgArray[i] );
 
 }
- console.log(bigarrar);
+//  console.log(bigarrar);
 
 
 //  console.log(leftImage.src)
@@ -120,16 +120,33 @@ function clickHandler(e) {
 
 
 
-function score(){
+// function score(){
 
-  counter =counter + 1;
+//   counter =counter + 1;
 
- let scoreSpan = document.getElementById("imgprodact");
+//  let scoreSpan = document.getElementById("imgprodact");
 
-  scoreSpan.innerHTML = counter ;
+//   scoreSpan.innerHTML = counter ;
 
 
-}
+// }
+
+
+// let button = document.getElementById("mohamed");
+
+//   let count = 0;
+
+//   button.onclick = function() {
+//   count += 1;
+//   button.innerHTML = "img1" + count ;
+  
+// };
+
+// console.log(count);
+
+
+
+
 
 
 

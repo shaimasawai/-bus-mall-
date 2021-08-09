@@ -29,8 +29,15 @@ const imgprodact = document.getElementById('imgprodact');
 let leftImage = document.getElementById('leftImage');
 let medelImage = document.getElementById('medelImage');
 let rightImage = document.getElementById('rightImage');
+let resultclick = document.getElementById('theresult');
 let counter = 0;
 let numberOfRound = 25;
+let leftRandom = 0;
+let maedlRandom =0;
+let rightRandom =0 ;
+// let leftImage=0 ;
+// let rightImage=0 ;
+// let medelImage =0;
 
 
 
@@ -39,7 +46,7 @@ function imgdivid( name , imgSrc){
     this.name = name;
     this.imges = imgSrc;
     this.shown = 0;
-    this.counter = 0;
+    this.timeclik = 0;
 
     bigarrar.push(this);
 
@@ -60,9 +67,9 @@ for( let i=0 ; i < imgArray.length ; i++){
     //  console.log('./img/' +  bigarrar[ getRandomNumber( 0, imgArray.length - 1 )].imges)
 
  function imdplace () {
-    let leftRandom = getRandomNumber( 0, imgArray.length - 1 );
-    let maedlRandom = getRandomNumber( 0, imgArray.length - 1 );
-    let rightRandom = getRandomNumber( 0, imgArray.length - 1 );
+     leftRandom = getRandomNumber( 0, imgArray.length - 1 );
+     maedlRandom = getRandomNumber( 0, imgArray.length - 1 );
+    rightRandom = getRandomNumber( 0, imgArray.length - 1 );
   
 
 
@@ -91,33 +98,97 @@ for( let i=0 ; i < imgArray.length ; i++){
   }
 
 
-  console.log(this.counter);
+
+
 
 imgprodact.addEventListener('click',clickHandler);
 
 function clickHandler(e) {
 
-  if((e.target.id === 'leftImage') && counter < numberOfRound) {
+  if((e.target.id === 'leftImage' || e.target.id === 'medelImage' || e.target.id === 'rightImage' ) && counter < numberOfRound) {
+
+
+    if(e.target.id === 'leftImage' ){
+
+
+      //  bigarrar[leftRandom].timeclik++;
+
+      console.log( bigarrar[leftRandom].timeclik++);
+      
+
+    }
+    if(e.target.id === 'medelImage' ){
+
+
+      //  bigarrar[leftRandom].timeclik++;
+
+      console.log( bigarrar[maedlRandom].timeclik++);
+      
+
+    }
+    if(e.target.id === 'rightImage' ){
+
+
+      //  bigarrar[leftRandom].timeclik++;
+
+      console.log( bigarrar[rightRandom].timeclik++);
+      
+
+    }
+
+   
+
+    // if (e.target.id === 'medelImage'){
+
+    //   imgdivid.imgArray[medelImage].timeclik++;
+
+
+
+    // }
+    // if( e.target.id === 'rightImage' ){
+
+    //   imgdivid.imgArray[rightImage].timeclik++;
+
+    // }
 
     imdplace();
 
-    this.counter++;
-  }
-  else if ((e.target.id === 'medelImage')&& counter < numberOfRound) {
-    imdplace();
+    counter++;
+    // console.log(bigarrar);
 
-    this.counter++;
-  }
 
-  else if ((e.target.id === 'rightImage')&& counter < numberOfRound) {
-    imdplace();
 
-   this.counter++;
-  }
+
+
+
+
+  //   imgdivid.imgArray[leftImage].timeclik++;
+
+  //   imdplace();
+
+  //   this.counter++;
+  // }
+  // else if ((e.target.id === 'medelImage')&& counter < numberOfRound) {
+  //   imdplace();
+
+  //   this.counter++;
+  // }
+
+  // else if ((e.target.id === 'rightImage')&& counter < numberOfRound) {
+  //   imdplace();
+
+  //  this.counter++;
+  // }
 }
 
+// counter++;
 
+// console.log(this.timeclik);\
+console.log(bigarrar);
 
+}
+
+// console.log(this.timeclik);
 
 
 // function score(){
@@ -145,8 +216,24 @@ function clickHandler(e) {
 // console.log(count);
 
 
+// function clickin(){
+//  document.getElementById("imgprodact").removeEventListener("click", imgresult);
+
+buttonbelow.addEventListener('click', print);
+function print(){
+  const ul = document.createElement('ul');
+  resultclick.appendChild(ul);
+
+  for(let i=0 ; i< bigarrar.length ;i++){
+    let li = document.createElement('li');
+    li.textContent= `${bigarrar[i].name} had ${bigarrar[i].shown} votes , and was seen ${bigarrar[i].timeclik} time. `;
+     ul.appendChild(li)
+
+  }
 
 
+
+}
 
 
 

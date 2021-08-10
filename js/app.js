@@ -114,6 +114,8 @@ for( let i=0 ; i < imgArray.length ; i++){
    bigarrar[rightRandom].shown++;
 
   // console.log(bigarrar)
+  localStorage.data = JSON.stringify(bigarrar);
+  console.log(bigarrar);
 
  }
 
@@ -329,7 +331,18 @@ let myChart = new Chart(ctx, {
 
 
 
-
+function getData() {
+  if( localStorage.data ) {
+    let data = JSON.parse( localStorage.data );
+    for( let i = 0; i < data.length; i++ ) {
+      new imgdivid ( data[i].name, data[i].imges, data[i].shown );
+    }
+  } else {
+    for( let i = 0; i < imgArray.length; i++ ) {
+      newimgdivid( imgArray[i].split( '.' )[0], imgArray[i] );
+    }
+  }
+}
 
 
 

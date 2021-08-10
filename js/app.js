@@ -39,6 +39,9 @@ let rightRandom =0 ;
 // let rightImage=0 ;
 // let medelImage =0;
 
+let similarArr =[];
+
+
 
 
 
@@ -67,9 +70,32 @@ for( let i=0 ; i < imgArray.length ; i++){
     //  console.log('./img/' +  bigarrar[ getRandomNumber( 0, imgArray.length - 1 )].imges)
 
  function imdplace () {
-     leftRandom = getRandomNumber( 0, imgArray.length - 1 );
-     maedlRandom = getRandomNumber( 0, imgArray.length - 1 );
-    rightRandom = getRandomNumber( 0, imgArray.length - 1 );
+
+
+
+  do{leftRandom = getRandomNumber( 0, imgArray.length - 1 );
+
+    maedlRandom = getRandomNumber( 0, imgArray.length - 1 );
+
+   rightRandom = getRandomNumber( 0, imgArray.length - 1 );
+
+  }
+  while (
+    leftRandom === maedlRandom ||
+
+    leftRandom === rightRandom ||
+
+    maedlRandom === rightRandom ||
+
+    similarArr.includes(leftRandom)||
+    similarArr.includes(maedlRandom)||
+    similarArr.includes(rightRandom)
+
+
+
+
+  )
+     
   
 
 
@@ -180,6 +206,9 @@ function clickHandler(e) {
   //  this.counter++;
   // }
 }
+else{
+  creatchart();
+}
 
 // counter++;
 
@@ -235,7 +264,67 @@ function print(){
 
 }
 
+// creatchart();
 
+function creatchart(){
+
+  let namearr=[];
+
+  let shwoarr=[];
+  let imgclick =[];
+
+  for ( let i=0 ; i < bigarrar.length ; i++) {
+
+    namearr.push(bigarrar[i].name);
+    shwoarr.push(bigarrar[i].shown);
+    imgclick.push(bigarrar[i].timeclik);
+  }
+
+  let ctx = document.getElementById('myChart').getContext('2d');
+let myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels:namearr ,
+        datasets: [{
+            label: '# of shown',
+            data: shwoarr ,
+            backgroundColor: [
+              
+                
+              'rgba(54, 162, 235, 1)',
+                
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 3
+        },
+      {
+        label: 'clicks',
+        data: imgclick,
+        backgroundColor: 'rgba(153 , 102 , 255 , 0.2',
+        borderColor : 'rgba(153 , 102 , 255 , 0.2',
+        borderWidth: 3
+
+      }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+
+}
 
 
 
